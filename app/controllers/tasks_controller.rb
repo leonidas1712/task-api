@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
   before_action :set_category, only: [:index]
 
-  # GET /tasks
+  # GET /tasks - if @category exists, render only category's tasks. Else, all tasks.
   def index
     if @category 
       render json: @category.tasks
