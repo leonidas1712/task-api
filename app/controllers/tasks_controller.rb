@@ -52,7 +52,7 @@ class TasksController < ApplicationController
       id = params[:category_id]
 
       if id 
-        @category = Category.find(params[:category_id])
+        @category = Category.find(id)
       end
     end
 
