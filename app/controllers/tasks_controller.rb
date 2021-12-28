@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
-  before_action :set_category, only: [:index, :create]
+  before_action :set_category, only: [:index, :create, :update]
 
   # GET /tasks - if @category exists, render only category's tasks. Else, all tasks.
   def index
@@ -17,6 +17,7 @@ class TasksController < ApplicationController
   end
 
   # POST /tasks
+  #TODO: Accept due date and priority fields 
   def create    
     @task = @category.tasks.build(task_params)
 
@@ -40,6 +41,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   def destroy
     @task.destroy
+    render json: @task
   end
 
   private
