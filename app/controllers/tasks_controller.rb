@@ -1,11 +1,14 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
+  before_action :set_category, only: [:index]
 
   # GET /tasks
   def index
-    @tasks = Task.all
-
-    render json: @tasks
+    if @category 
+      render json: @category.tasks
+    else 
+      render json: Task.all
+    end
   end
 
   # GET /tasks/1
@@ -42,6 +45,15 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    # Set category of a task in instance variable
+    def set_category
+      id = params[:category_id]
+
+      if id 
+        @category = Category.find(params[:category_id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
