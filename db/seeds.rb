@@ -17,14 +17,17 @@ cat2.save
 
 t1 = cat1.tasks.build 
 t1.name = "Task1, Cat1"
+t1.description = "Task1 description "
 t1.save 
 
 t2 = cat1.tasks.build
 t2.name = "Task2, Cat1"
+t2.description = "Buy laundry"
 t2.save 
 
 t2_1 = cat2.tasks.build 
 t2_1.name = "Task 1, Cat 2"
+t2_1.description = "Once finished, update teammates and finalize plan"
 t2_1.save 
 
 t2_2 = cat2.tasks.build 
