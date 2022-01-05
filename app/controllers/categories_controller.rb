@@ -34,8 +34,10 @@ class CategoriesController < ApplicationController
   end
 
   # DELETE /categories/1
+  # return category that was deleted to make appropriate actions on consumer
   def destroy
     @category.destroy
+    render json: @category
   end
 
   private
