@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
-  before_action :set_category, only: [:index, :create, :update]
+  before_action :set_category, only: [:index, :create]
 
   # GET /tasks - if @category exists, render only category's tasks. Else, all tasks.
   def index
