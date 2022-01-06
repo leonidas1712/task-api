@@ -17,7 +17,6 @@ class TasksController < ApplicationController
   end
 
   # POST /tasks
-  #TODO: Accept due date and priority fields 
   def create    
     @task = @category.tasks.build(task_params)
 
@@ -62,6 +61,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:name, :description, :due_date, :priority)
+      params.require(:task).permit(:name, :description, :due_date, :priority, :category_id)
     end
 end
