@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :categories do
-    resources :tasks, except: [:update]
+  # only allow GET, POST /categories and DELETE /categories/:id
+  resources(:categories, except: [:show]) do
+    # only POST /categories/:id/tasks
+    resources :tasks, only: [:create]
   end
 
-  resources :tasks, only: [:index, :destroy, :update, :show]
+  # GET all tasks, DELETE or PATCH specific tasks
+  resources :tasks, only: [:index, :destroy, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

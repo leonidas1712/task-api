@@ -16,7 +16,8 @@ class TasksController < ApplicationController
     render json: @task
   end
 
-  # POST /tasks
+  # POST /tasks (/categories/:id/tasks)
+  # POST to root/tasks route does not exist, so request must come through /categories/:id
   def create    
     @task = @category.tasks.build(task_params)
 
